@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Суперпозиция состояний</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="intro">
+      <h1>Как это работает</h1>
+      <p>
+        Перед тобой метафорическая сцена — визуализация того, что в тебе одновременно
+        существуют разные состояния. Позволь себе просто побыть рядом с ними.
+      </p>
+    </header>
+
+    <section class="input-panel">
+      <div class="prompt">
+        <h2>Во мне сейчас есть…</h2>
+        <div class="suggestions" data-target="stateA"></div>
+        <label class="input-label">
+          <span class="visually-hidden">Состояние A</span>
+          <input id="stateA" type="text" placeholder="желание уйти" maxlength="60" />
+        </label>
+      </div>
+
+      <div class="prompt">
+        <h2>Я чувствую одновременно…</h2>
+        <div class="suggestions" data-target="stateB"></div>
+        <label class="input-label">
+          <span class="visually-hidden">Состояние B</span>
+          <input id="stateB" type="text" placeholder="любовь" maxlength="60" />
+        </label>
+      </div>
+    </section>
+
+    <section class="stage" aria-live="polite">
+      <div class="orb-container">
+        <div class="orb orb-a">
+          <span class="orb-label" id="labelA">желание уйти</span>
+        </div>
+        <div class="orb orb-b">
+          <span class="orb-label" id="labelB">любовь</span>
+        </div>
+        <div class="halo"></div>
+      </div>
+      <p class="hint">Наблюдай, как два состояния танцуют рядом.</p>
+    </section>
+
+    <section class="actions">
+      <button class="ghost" id="observe">Наблюдать</button>
+      <button class="primary" id="choose">Выбрать</button>
+    </section>
+
+    <section class="message" id="message" hidden>
+      <p></p>
+    </section>
+  </main>
+
+  <template id="option-template">
+    <button type="button" class="suggestion"></button>
+  </template>
+
+  <dialog id="choice-dialog">
+    <form method="dialog" class="dialog-body">
+      <h2>Что сейчас ближе?</h2>
+      <p class="dialog-text">Выбери одно из состояний. Второе никуда не исчезает — оно просто рядом.</p>
+      <div class="dialog-options">
+        <button value="A" class="choice" data-choice="A"></button>
+        <button value="B" class="choice" data-choice="B"></button>
+      </div>
+      <div class="dialog-actions">
+        <button value="cancel" class="ghost">Отменить</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
